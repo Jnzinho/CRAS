@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './Navbar.css';
 
 const Navbar = () => {
+
+  const [isMenuOpened, setIsMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (isMenuOpened) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+  }, [isMenuOpened]);
+
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">
           <img
             src="https://seeklogo.com/images/C/cras-logo-902CB72BB8-seeklogo.com.png"
-            width="112"
-            height="28"
-            alt="Bulma Logo"
+            alt="Logo do Cras"
           />
         </a>
 
         <a
           role="button"
-          className="navbar-burger"
+          className={`navbar-burger ${isMenuOpened ? 'is-active' : ''}`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
-          href="..."
+          onClick={() => setIsMenuOpen(!isMenuOpened)}
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -27,12 +38,11 @@ const Navbar = () => {
         </a>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
+      <div id="navbarBasicExample" className={`navbar-menu ${isMenuOpened ? 'is-active' : ''}`}>
         <div className="navbar-start">
           <a className="navbar-item">Home</a>
 
           <a className="navbar-item">Documentation</a>
-
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">More</a>
 
