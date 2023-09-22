@@ -6,4 +6,6 @@ const sequelize = new Sequelize('cras', 'jnzinho', 'admin', {
   dialect: 'postgres',
 });
 
+sequelize.sync({ force: true }).then(() => console.log('DB Synced')).catch((err) => console.error(err));
+
 export default sequelize;

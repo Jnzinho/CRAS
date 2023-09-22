@@ -3,6 +3,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 import sequelize from './sequelize';
 
+import teacherRouter from './routes/teacherRouter';
+
 // Define routes and middleware here
 
 const sequelizeTest = async () => {
