@@ -18,12 +18,9 @@ const Teacher = sequelize.define('Teacher', {
     allowNull: false,
     unique: true,
   },
-  hashedPassword: {
+  password: {
     type: DataTypes.STRING(64),
     allowNull: false,
-    validate: {
-      is: /^[0-9a-f]{64}$/i
-    },
   },
 }, {
   tableName: 'professores',

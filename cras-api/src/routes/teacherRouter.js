@@ -1,5 +1,5 @@
 import express from 'express';
-import { Teacher } from '../models';
+import Teacher from '../models/teacherModel';
 import bcrypt from 'bcrypt';
 import { Jwt } from 'jsonwebtoken';
 
@@ -34,11 +34,17 @@ router.get('/:id', async (req, res) => {
 });
 
 // Criar
-router.post('/', async (req, res) => {
-  const { name, username, hashedPassword } = req.body;
+router.post('/', async (req, res, next) => {
+  const { name, username, password } = req.body;
   try {
-    const newTeacher = await Teacher.create({ name, username, hashedPassword });
-    res.status(201).json(newTeacher);
+    const salt = bcrypt.genSaltSync(10);
+    const teacher = {
+      name,
+      username,
+      password: bcrypt.hashSync(password, salt),
+    };
+    const createdTeacher = await Teacher.create(teacher);
+    res.status(201).json(createdTeacher);
   } catch (error) {
     console.error('Error creating teacher:', error);
     res.status(500).json({ error: 'Internal server error' });
