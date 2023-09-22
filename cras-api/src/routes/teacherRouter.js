@@ -35,6 +35,8 @@ router.get('/:id', async (req, res) => {
 
 // Criar
 router.post('/', async (req, res, next) => {
+  console.log(req);
+  console.log(req.body);
   const { name, username, password } = req.body;
   try {
     const salt = bcrypt.genSaltSync(10);
@@ -44,7 +46,11 @@ router.post('/', async (req, res, next) => {
       password: bcrypt.hashSync(password, salt),
     };
     const createdTeacher = await Teacher.create(teacher);
-    res.status(201).json(createdTeacher);
+    res.status(201).json({
+      id: createdTeacher.id,
+      name: createdTeacher.name,
+      username: createdTeacher.username,
+    });
   } catch (error) {
     console.error('Error creating teacher:', error);
     res.status(500).json({ error: 'Internal server error' });

@@ -6,6 +6,7 @@ import sequelize from './sequelize';
 import teacherRouter from './routes/teacherRouter';
 import loginRouter from './routes/loginRouter';
 
+app.use(express.json());
 // Teacher route:
 app.use('/teachers', teacherRouter);
 // Login route:
