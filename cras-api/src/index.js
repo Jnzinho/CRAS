@@ -1,10 +1,13 @@
 import express from 'express';
+import sequelize from './sequelize';
+import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 3000;
-import sequelize from './sequelize';
 
 import teacherRouter from './routes/teacherRouter';
 import loginRouter from './routes/loginRouter';
+
+app.use(cors());
 
 app.use(express.json());
 // Teacher route:
