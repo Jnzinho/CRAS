@@ -7,8 +7,11 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <header className="header">
-      <div className="logo">
-        <img src="https://seeklogo.com/images/C/cras-logo-902CB72BB8-seeklogo.com.png" alt="Logo" />
+      <div className="logo flex gap-1 flex-row items-center justify-center">
+        <Link to="/">
+          <img src="https://i.pinimg.com/originals/09/ab/f7/09abf7e93721f799faa437230f99c1d3.gif" alt="Logo" />
+        </Link>
+        <h1>CRAS - Centro de Referência de Assistência Social</h1>
       </div>
       <div className="nav-links">
         <Link to="/professores">Professores</Link>

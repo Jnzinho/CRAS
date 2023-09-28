@@ -69,6 +69,7 @@ router.put('/:id', async (req, res) => {
       teacher.name = name;
       teacher.username = username;
       teacher.hashedPassword = hashedPassword;
+      teacher.updatedAt = new Date();
       await teacher.save();
       res.json(teacher);
     }
