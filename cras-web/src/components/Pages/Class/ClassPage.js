@@ -6,16 +6,16 @@ import moment from 'moment';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import Modal from 'react-modal';
-import GameEdit from './GameEdit.js';
-import GameNew from './GameNew';
+import ClassEdit from './ClassEdit.js';
+import ClassNew from './ClassNew.js';
 
-function GamePage() {
-  const [games, setGames] = useState([]);
+function ClassPage() {
+  const [classes, setClasses] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
-  const [selectedGame, setSelectedGame] = useState({});
+  const [selectedClass, setSelectedClass] = useState({});
 
-  async function removeGame(id) {
+  async function removeClass(id) {
     const confirmation = await Swal.fire({
       title: 'Tem certeza?',
       text: 'Você não poderá reverter isso!',
@@ -27,41 +27,41 @@ function GamePage() {
       cancelButtonText: 'Cancelar',
     });
     if (confirmation.isConfirmed) {
-      await axios.delete(`http://localhost:3000/games/${id}`);
-      setGames(games.filter((game) => game.id !== id));
-      Swal.fire('Deletado!', 'O jogo foi deletado.', 'success');
+      await axios.delete(`http://localhost:3000/classes/${id}`);
+      setClasses(classes.filter((classe) => classe.id !== id));
+      Swal.fire('Deletado!', 'A turma foi deletada.', 'success');
     }
   }
 
-  async function getGames() {
-    const response = await axios.get('http://localhost:3000/games');
+  async function getClasses() {
+    const response = await axios.get('http://localhost:3000/classes');
     return response.data;
   }
 
   async function onModalClose() {
     setModalIsOpen(false);
-    setSelectedGame(null);
+    setSelectedClass(null);
   }
 
   async function handleEditClick(row) {
     setIsCreating(false);
     setModalIsOpen(true);
-    setSelectedGame(row);
+    setSelectedClass(row);
   }
 
-  async function createGame(e) {
+  async function createClass(e) {
     // post
     e.preventDefault();
     const form = document.getElementById('create-form');
-    const name = form.elements.name.value;
     const description = form.elements.description.value;
+    const code = form.elements.code.value;
     const data = {
-      name,
       description,
+      code,
     };
-    await axios.post('http://localhost:3000/games', data);
-    const updatedGames = await getGames();
-    setGames(updatedGames);
+    await axios.post('http://localhost:3000/classes', data);
+    const updatedClasses = await getClasses();
+    setClasses(updatedClasses);
     setIsCreating(false);
     form.reset();
   }
@@ -70,15 +70,15 @@ function GamePage() {
     // post
     e.preventDefault();
     const form = document.getElementById('edit-form');
-    const name = form.elements.name.value;
     const description = form.elements.description.value;
+    const code = form.elements.code.value;
     const data = {
-      name,
       description,
+      code,
     };
-    await axios.put(`http://localhost:3000/games/${selectedGame.id}`, data);
-    const updatedGames = await getGames();
-    setGames(updatedGames);
+    await axios.put(`http://localhost:3000/classes/${selectedClass.id}`, data);
+    const updatedClasses = await getClasses();
+    setClasses(updatedClasses);
     setModalIsOpen(false);
     form.reset();
   }
@@ -90,8 +90,8 @@ function GamePage() {
       sortable: true,
     },
     {
-      name: 'Nome',
-      selector: (row) => row.name,
+      name: 'Código',
+      selector: (row) => row.code,
       sortable: true,
     },
     {
@@ -125,7 +125,7 @@ function GamePage() {
     {
       cell: (row) => (
         <button
-          onClick={() => removeGame(row.id)}
+          onClick={() => removeClass(row.id)}
           className="btn btn-danger bg-red-600 p-1 text-white rounded"
         >
           <FaTrash />
@@ -138,8 +138,8 @@ function GamePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await getGames();
-        setGames(data);
+        const data = await getClasses();
+        setClasses(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -151,18 +151,18 @@ function GamePage() {
   return (
     <div className="p-4">
       {isCreating ? (
-        <GameNew
+        <ClassNew
           setIsCreating={setIsCreating}
-          createGame={createGame}
-        ></GameNew>
+          createClass={createClass}
+        ></ClassNew>
       ) : (
         <div>
-          <div className="text-center pb-2 font-bold">Jogos</div>
+          <div className="text-center pb-2 font-bold">Turmas</div>
           <button
             onClick={() => setIsCreating(true)}
             className="btn btn-primary bg-blue-600 p-1 text-white rounded mb-2"
           >
-            Novo Jogo
+            Nova Turma
           </button>
           <Modal
             isOpen={modalIsOpen}
@@ -184,20 +184,20 @@ function GamePage() {
               },
             }}
           >
-            <GameEdit
+            <ClassEdit
               onModalClose={onModalClose}
-              selectedGame={selectedGame}
+              selectedClass={selectedClass}
               onEdit={onEdit}
             />
           </Modal>
           <DataTable
-            title="Jogos"
+            title="Turmas"
             columns={columns}
-            data={games}
+            data={classes}
             pagination={true}
             className="rounded-lg shadow-lg border"
             paginationComponentOptions={{
-              rowsPerPageText: 'Jogos por página:',
+              rowsPerPageText: 'Turmas por página:',
               rangeSeparatorText: 'de',
               noRowsPerPage: false,
               selectAllRowsItem: false,
@@ -212,4 +212,4 @@ function GamePage() {
   );
 }
 
-export default GamePage;
+export default ClassPage;

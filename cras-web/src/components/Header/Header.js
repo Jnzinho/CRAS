@@ -9,9 +9,12 @@ function Header() {
     <header className="header">
       <div className="logo flex gap-1 flex-row items-center justify-center">
         <Link to="/">
-          <img src="https://i.pinimg.com/originals/09/ab/f7/09abf7e93721f799faa437230f99c1d3.gif" alt="Logo" />
+          <img
+            src="https://i.pinimg.com/originals/09/ab/f7/09abf7e93721f799faa437230f99c1d3.gif"
+            alt="Logo"
+          />
         </Link>
-        <h1>CRAS - Centro de Referência de Assistência Social</h1>
+        <h3>CRAS - Centro de Referência de Assistência Social</h3>
       </div>
       <div className="nav-links">
         <Link to="/professores">Professores</Link>

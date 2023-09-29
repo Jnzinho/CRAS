@@ -1,19 +1,27 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../sequelize";
+import { DataTypes } from 'sequelize';
+import sequelize from '../sequelize';
 
-const Class = sequelize.define('Class', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false,
+const Class = sequelize.define(
+  'Class',
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    code: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  description: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-}, {
-  tableName: 'Turma'
-});
+  {
+    tableName: 'turmas',
+  }
+);
 
-export default Turma;
+export default Class;

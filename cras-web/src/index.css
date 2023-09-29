@@ -2,13 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url(https://db.onlinewebfonts.com/c/d642a55bac4df71e7c87a9394df80363?family=Cera+Round+Pro+DEMO+Regular); 
+@import url(https://db.onlinewebfonts.com/c/d642a55bac4df71e7c87a9394df80363?family=Cera+Round+Pro+DEMO+Regular);
 
 * {
-    font-family: "Cera Round Pro DEMO Regular", Inter, serif;
-    font-size: 16px;
+  font-family: 'Cera Round Pro DEMO Regular', Inter, serif;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .content {
-    margin-top: 70px; /* Adjust the value to match your header's height */
+  margin-top: 60px; /* Adjust the value to match your header's height */
 }

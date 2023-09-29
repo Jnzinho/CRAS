@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 
-function GameNew({ setIsCreating, createGame }) {
+function GameNew({ setIsCreating, createClass }) {
   return (
     <div>
       <div className="text-center font-bold flex items-center justify-center">
@@ -11,15 +11,15 @@ function GameNew({ setIsCreating, createGame }) {
         >
           <FaArrowLeft />
         </button>
-        Criar Jogo
+        Criar Turma
       </div>
-      <form id="create-form" onSubmit={createGame}>
+      <form id="create-form" onSubmit={createClass}>
         <div className="flex flex-col p-4">
-          <label htmlFor="name">Nome</label>
+          <label htmlFor="code">Código</label>
           <input
             type="text"
-            name="name"
-            id="name"
+            name="code"
+            id="code"
             className="border rounded-lg p-2"
           />
         </div>

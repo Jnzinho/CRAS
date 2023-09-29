@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
-function GameEdit({ onModalClose, selectedGame, onEdit }) {
+function GameEdit({ onModalClose, selectedClass, onEdit }) {
   useEffect(() => {
-    if (selectedGame) {
-      document.getElementById('name').value = selectedGame.name;
-      document.getElementById('description').value = selectedGame.description;
+    if (selectedClass) {
+      document.getElementById('description').value = selectedClass.description;
+      document.getElementById('code').value = selectedClass.code;
     }
-  }, [selectedGame]);
+  }, [selectedClass]);
 
   return (
     <div>
@@ -18,20 +18,20 @@ function GameEdit({ onModalClose, selectedGame, onEdit }) {
       />
       <form id="edit-form" onSubmit={onEdit}>
         <div className="flex flex-col p-4">
-          <label htmlFor="name">Nome</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            className="border rounded-lg p-2"
-          />
-        </div>
-        <div className="flex flex-col p-4">
           <label htmlFor="description">Descrição</label>
           <textarea
             type="text"
             name="description"
             id="description"
+            className="border rounded-lg p-2"
+          />
+        </div>
+        <div className="flex flex-col p-4">
+          <label htmlFor="code">Código</label>
+          <textarea
+            type="text"
+            name="code"
+            id="code"
             className="border rounded-lg p-2"
           />
         </div>

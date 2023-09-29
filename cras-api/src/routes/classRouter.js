@@ -1,5 +1,5 @@
 import express from 'express';
-import Class from '../models/classesModel';
+import Class from '../models/classModel';
 import bcrypt from 'bcrypt';
 import { Jwt } from 'jsonwebtoken';
 
@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 
 // Get por ID
 router.get('/:id', async (req, res) => {
@@ -37,19 +36,23 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res, next) => {
   console.log(req);
   console.log(req.body);
-  const { name, username, password } = req.body;
+  const { code, description } = req.body;
+  if (!code || !description) {
+    res
+      .status(400)
+      .json({ error: 'Missing required fields: code and description' });
+    return;
+  }
   try {
-    const salt = bcrypt.genSaltSync(10);
-    const classes = {
-      name,
-      username,
-      password: bcrypt.hashSync(password, salt),
+    const class1 = {
+      code,
+      description,
     };
-    const createdClass = await classes.create(teacher);
+    const createdClass = await Class.create(class1);
     res.status(201).json({
       id: createdClass.id,
-      name: createdClass.name,
-      username: createdClass.username,
+      code: createdClass.code,
+      description: createdClass.description,
     });
   } catch (error) {
     console.error('Error creating classes:', error);
@@ -60,15 +63,20 @@ router.post('/', async (req, res, next) => {
 // Update por id
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, username, hashedPassword } = req.body;
+  const { code, description } = req.body;
+  if (!code || !description) {
+    res
+      .status(400)
+      .json({ error: 'Missing required fields: code and description' });
+    return;
+  }
   try {
     const classes = await Class.findByPk(id);
     if (!classes) {
       res.status(404).json({ error: 'Class not found' });
     } else {
-      classes.name = name;
-      classes.username = username;
-      classes.hashedPassword = hashedPassword;
+      classes.description = description;
+      classes.code = code;
       await classes.save();
       res.json(classes);
     }
