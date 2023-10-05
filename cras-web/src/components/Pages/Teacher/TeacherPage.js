@@ -200,6 +200,7 @@ function TeacherPage() {
           <DataTable
             title="Professores"
             columns={columns}
+            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
             data={teachers}
             pagination={true}
             className="rounded-lg shadow-lg border"

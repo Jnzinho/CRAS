@@ -194,6 +194,7 @@ function ClassPage() {
             title="Turmas"
             columns={columns}
             data={classes}
+            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 30]}
             pagination={true}
             className="rounded-lg shadow-lg border"
             paginationComponentOptions={{
