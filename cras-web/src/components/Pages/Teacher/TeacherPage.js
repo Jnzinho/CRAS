@@ -61,11 +61,18 @@ function TeacherPage() {
       username,
       password,
     };
-    await axios.post('http://localhost:3000/teachers', data);
-    const updatedTeachers = await getTeachers();
-    setTeachers(updatedTeachers);
-    setIsCreating(false);
-    form.reset();
+    try {
+      const response = await axios.post('http://localhost:3000/teachers', data);
+      if (response.error) {
+        Swal.fire('Erro!', `${response.error}`, 'error');
+      }    
+      const updatedTeachers = await getTeachers();
+      setTeachers(updatedTeachers);
+      setIsCreating(false);
+      form.reset();
+    } catch (err) {
+      Swal.fire('Erro!', `${err.response.data.error}`, 'error');
+    }
   }
 
   async function onEdit(e) {

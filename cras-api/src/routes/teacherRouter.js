@@ -2,8 +2,17 @@ import express from 'express';
 import Teacher from '../models/teacherModel';
 import bcrypt from 'bcrypt';
 import { Jwt } from 'jsonwebtoken';
+import passwordValidator from 'password-validator';
 
 const router = express.Router();
+
+const schema = new passwordValidator();
+
+schema.is().min(8)
+.is().max(100)
+.has().uppercase()
+.has().lowercase()
+.has().not().spaces() 
 
 // Get Todos os professores
 router.get('/', async (req, res) => {
@@ -39,6 +48,11 @@ router.post('/', async (req, res, next) => {
   console.log(req.body);
   const { name, username, password } = req.body;
   try {
+    // TODO: traduzir erros de validação para portugues
+    const passwordErrors = schema.validate(password, {details: true});
+    if (passwordErrors && passwordErrors.length > 0) {
+      return res.status(400).json({ error: passwordErrors[0].message });
+    }
     const salt = bcrypt.genSaltSync(10);
     const teacher = {
       name,
