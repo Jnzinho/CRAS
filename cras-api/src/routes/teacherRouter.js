@@ -8,11 +8,11 @@ const router = express.Router();
 
 const schema = new passwordValidator();
 
-schema.is().min(8)
-.is().max(100)
-.has().uppercase()
-.has().lowercase()
-.has().not().spaces() 
+schema.is().min(8, 'O número mínimo de caracteres é 8.')
+.is().max(100, 'Tamanho máximo da senha é 100 caracteres')
+.has().uppercase(1, 'Por favor, utilize pelo menos uma letra maíuscula em sua senha')
+.has().lowercase(1, 'Por favor, utilize pelo menos uma letra minúscula em sua senha')
+.has().not().spaces(1, 'Por favor, Não utilize espaços em sua senha') 
 
 // Get Todos os professores
 router.get('/', async (req, res) => {
