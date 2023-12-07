@@ -27,9 +27,9 @@ function AboutPage() {
                     </h2>
                     <p className="text-base text-gray-700">O Centro de Referência de Assistência Social - CRAS é uma unidade pública de atendimento à população e são oferecidos os serviços de Assistência Social. .</p>
                     <div className="mt-10 flex flex-col items-center md:flex-row">
-                        <a href="https://www.gov.br/pt-br/servicos/acessar-o-cras-centro-de-referencia-da-assistencia-social" className="pointer mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-green-600 px-6 font-medium tracking-wide text-white shadow-md transition hover:bg-blue-800 focus:outline-none md:mr-4 md:mb-0 md:w-auto">
+                        <a href="https://www.gov.br/pt-br/servicos/acessar-o-cras-centro-de-referencia-da-assistencia-social" target='_blank' className="pointer mb-3 inline-flex h-12 w-full items-center justify-center rounded bg-green-600 px-6 font-medium tracking-wide text-white shadow-md transition hover:bg-blue-800 focus:outline-none md:mr-4 md:mb-0 md:w-auto">
                             Saiba mais</a>
-                        <a href="https://www.chapeco.sc.gov.br/conteudo/281/centros-de-referEncia-de-assistEncia-social-cras" aria-label="" className="group inline-flex items-center font-semibold text-g1">
+                        <a href="https://www.chapeco.sc.gov.br/conteudo/281/centros-de-referEncia-de-assistEncia-social-cras" target='_blank' aria-label="" className="group inline-flex items-center font-semibold text-g1">
                             Veja como funciona
                             <svg xmlns="https://www.gov.br/pt-br/servicos/acessar-o-cras-centro-de-referencia-da-assistencia-social" className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
