@@ -9,6 +9,7 @@ import ClassPage from './components/Pages/Class/ClassPage';
 import GamePage from './components/Pages/Game/GamePage';
 import VideoPage from './components/Pages/Video/VideoPage';
 import JogoTestePage from './components/Pages/JogoTestePage';
+import AboutPage from './components/Pages/AboutPage';
 import Layout from './components/Layout';
 
 const router = createBrowserRouter([
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
       {
         path: '/jogo-teste',
         element: <JogoTestePage />
-      }
+      },
+      {
+        path: '/sobre',
+        element: <AboutPage />
+      },
     ],
   },
 ]);

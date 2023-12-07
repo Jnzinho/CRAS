@@ -19,8 +19,8 @@ const products = [
   { name: 'Professores (temporario)', description: 'Gerenciar os professores da aplicação', href: '/professores', icon: SquaresPlusIcon },
 ]
 const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+  // { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
+  // { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ]
 
 function classNames(...classes) {
@@ -31,12 +31,12 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white">
+    <header className="bg-white" style={{zIndex: 1000}}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">CRAS</span>
-            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+            <img className="h-8 w-auto" src="https://desenvolvimentosocial.rc.sp.gov.br/wp-content/uploads/2020/01/cras.png" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -107,9 +107,9 @@ export default function Example() {
               </Popover.Panel>
             </Transition>
           </Popover>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to='sobre' className="text-sm font-semibold leading-6 text-gray-900">
             Sobre o CRAS
-          </a>
+          </Link>
           <Link to="jogo-teste" className="text-sm font-semibold leading-6 text-gray-900">
             Jogo Teste!
           </Link>
