@@ -10,12 +10,15 @@ import React from 'react';
 function JogoTestePage() {
 	return (
 		<div>
-			<iframe
-        style={{ width: '100%', height: '550px', overflow: 'hidden' }}
-				src="https://project-lolu.github.io/games/FireboyAndWatergirl/"
-				scrolling="no"
-				title="Checkers">
-			</iframe>
+			<h1 className='text-center mb-5'>Watergirl and Fireboy</h1>
+			<div className='flex flex-row align-center justify-center'>
+				<iframe
+			style={{ width: '80%', height: '550px', overflow: 'hidden' }}
+					src="https://project-lolu.github.io/games/FireboyAndWatergirl/"
+					scrolling="no"
+					title="Checkers">
+				</iframe>
+			</div>
 		</div>
 	)
 }

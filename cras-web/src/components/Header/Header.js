@@ -34,10 +34,10 @@ export default function Example() {
     <header className="bg-white" style={{zIndex: 1000}}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link to='/' className="-m-1.5 p-1.5">
             <span className="sr-only">CRAS</span>
             <img className="h-8 w-auto" src="https://desenvolvimentosocial.rc.sp.gov.br/wp-content/uploads/2020/01/cras.png" alt="" />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -51,11 +51,22 @@ export default function Example() {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Criar sala
-          </a>
+          <div className='relative'>
+            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+              Criar sala
+            </a>
+            <div className='absolute bg-blue-200 rounded p-1' style={{
+              top: '-15px',
+              right: '-30px',
+              fontSize: '10px'
+            }}>
+              Em breve
+            </div>
+          </div>
           {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
+            Company  <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+              Criar sala
+            </a>
           </a> */}
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
@@ -110,14 +121,28 @@ export default function Example() {
           <Link to='sobre' className="text-sm font-semibold leading-6 text-gray-900">
             Sobre o CRAS
           </Link>
-          <Link to="jogo-teste" className="text-sm font-semibold leading-6 text-gray-900">
-            Jogo Teste!
+          <Link to="jogar" className="text-sm font-semibold leading-6 text-gray-900 relative">
+            <span>Jogar</span>
+            <div className='absolute bg-orange-200 rounded p-0' style={{
+              top: '-15px',
+              right: '-50px',
+              fontSize: '10px'
+            }}>
+              Temporário!
+            </div>
           </Link>
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end relative">
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Entrar <span aria-hidden="true">&rarr;</span>
           </a>
+          <div className='absolute bg-blue-200 rounded p-1' style={{
+              top: '-15px',
+              right: '-30px',
+              fontSize: '10px'
+            }}>
+              Em breve
+            </div>
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

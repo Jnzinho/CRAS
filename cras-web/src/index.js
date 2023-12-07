@@ -11,6 +11,7 @@ import VideoPage from './components/Pages/Video/VideoPage';
 import JogoTestePage from './components/Pages/JogoTestePage';
 import AboutPage from './components/Pages/AboutPage';
 import Layout from './components/Layout';
+import GameList from './components/Pages/Game/GameList';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/sobre',
         element: <AboutPage />
+      },
+      {
+        path: '/jogar',
+        element: <GameList />
       },
     ],
   },
