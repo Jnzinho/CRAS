@@ -12,6 +12,10 @@ const Game = sequelize.define('Game', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  url: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   description: {
     type: DataTypes.STRING,
     allowNull: false,

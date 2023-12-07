@@ -7,6 +7,8 @@ import App from './App';
 import TeacherPage from './components/Pages/Teacher/TeacherPage';
 import ClassPage from './components/Pages/Class/ClassPage';
 import GamePage from './components/Pages/Game/GamePage';
+import VideoPage from './components/Pages/Video/VideoPage';
+import JogoTestePage from './components/Pages/JogoTestePage';
 import Layout from './components/Layout';
 
 const router = createBrowserRouter([
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
         path: '/jogos',
         element: <GamePage />,
       },
+      {
+        path: '/videos',
+        element: <VideoPage />
+      },
+      {
+        path: '/jogo-teste',
+        element: <JogoTestePage />
+      }
     ],
   },
 ]);

@@ -20,6 +20,8 @@ function Header() {
         <Link to="/professores">Professores</Link>
         <Link to="/turmas">Turmas</Link>
         <Link to="/jogos">Jogos</Link>
+        <Link to="/videos">Videos</Link>
+        <Link to="/jogo-teste">Jogo Teste</Link>
       </div>
     </header>
   );
