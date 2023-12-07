@@ -18,8 +18,8 @@ function VideoNew({ setIsCreating, createVideo }) {
           <label htmlFor="name">Endereço</label>
           <input
             type="text"
-            name="link"
-            id="link"
+            name="url"
+            id="url"
             className="border rounded-lg p-2"
           />
         </div>

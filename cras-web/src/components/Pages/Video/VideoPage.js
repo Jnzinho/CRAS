@@ -53,13 +53,10 @@ function VideoPage() {
     // post
     e.preventDefault();
     const form = document.getElementById('create-form');
-    const name = form.elements.name.value;
-    const username = form.elements.username.value;
-    const password = form.elements.password.value;
+    const url = form.elements.url.value;
+    console.log(url);
     const data = {
-      name,
-      username,
-      password,
+      url,
     };
     try {
       const response = await axios.post('http://localhost:3000/videos', data);
@@ -79,13 +76,9 @@ function VideoPage() {
     // post
     e.preventDefault();
     const form = document.getElementById('edit-form');
-    const name = form.elements.name.value;
-    const username = form.elements.username.value;
-    const password = form.elements.password.value;
+    const url = form.elements.url.value;
     const data = {
-      name,
-      username,
-      password,
+      url,
     };
     await axios.put(
       `http://localhost:3000/videos/${selectedVideo.id}`,
@@ -105,13 +98,8 @@ function VideoPage() {
     },
     {
       name: 'Endereço',
-      selector: (row) => row.name,
-      sortable: true,
-    },
-    {
-      name: 'Título',
-      selector: (row) => row.username,
-      sortable: true,
+      selector: (row) => row.url,
+      sortable: false,
     },
     {
       name: 'Adicionado em',
