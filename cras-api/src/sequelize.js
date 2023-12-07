@@ -6,7 +6,7 @@ const sequelize = new Sequelize('cras', 'jnzinho', 'admin', {
   dialect: 'postgres',
 });
 
-// // caso precisar apagar a database, descomente isso
+// caso precisar apagar a database, descomente isso
 // sequelize
 //   .sync({ force: true })
 //   .then(() => console.log('DB Synced'))

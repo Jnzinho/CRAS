@@ -32,6 +32,15 @@ function GameNew({ setIsCreating, createGame }) {
             rows={5}
           />
         </div>
+        <div className="flex flex-col p-4">
+          <label htmlFor="url">Url</label>
+          <textarea
+            name="url"
+            id="url"
+            className="border rounded-lg p-2"
+            rows={5}
+          />
+        </div>
         <div className="flex justify-center">
           <button
             type="submit"

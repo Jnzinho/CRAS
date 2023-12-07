@@ -55,9 +55,11 @@ function GamePage() {
     const form = document.getElementById('create-form');
     const name = form.elements.name.value;
     const description = form.elements.description.value;
+    const url = form.elements.url.value;
     const data = {
       name,
       description,
+      url,
     };
     await axios.post('http://localhost:3000/games', data);
     const updatedGames = await getGames();
@@ -72,9 +74,11 @@ function GamePage() {
     const form = document.getElementById('edit-form');
     const name = form.elements.name.value;
     const description = form.elements.description.value;
+    const url = form.elements.url.value;
     const data = {
       name,
       description,
+      url,
     };
     await axios.put(`http://localhost:3000/games/${selectedGame.id}`, data);
     const updatedGames = await getGames();
@@ -149,15 +153,15 @@ function GamePage() {
   }, []);
 
   return (
-    <div className="p-4">
+    <div>
       {isCreating ? (
         <GameNew
           setIsCreating={setIsCreating}
           createGame={createGame}
         ></GameNew>
       ) : (
-        <div>
-          <div className="text-center pb-2 font-bold">Jogos</div>
+        <div className='p-2'>
+          <h1 className="text-center pb-2 font-bold">Jogos</h1>
           <button
             onClick={() => setIsCreating(true)}
             className="btn btn-primary bg-blue-600 p-1 text-white rounded mb-2"

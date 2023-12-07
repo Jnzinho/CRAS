@@ -1,11 +1,11 @@
 import express from 'express';
 import Game from '../models/gameModel';
-import bcrypt from 'bcrypt';
-import { Jwt } from 'jsonwebtoken';
+// import bcrypt from 'bcrypt';
+// import { Jwt } from 'jsonwebtoken';
 
 const router = express.Router();
 
-// Get Todos os professores
+// Get Todos os jogos
 router.get('/', async (req, res) => {
   try {
     const games = await Game.findAll();
@@ -36,17 +36,19 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res, next) => {
   console.log(req);
   console.log(req.body);
-  const { name, description } = req.body;
+  const { name, description, url } = req.body;
   try {
     const game = {
       name,
       description,
+      url,
     };
     const createdGame = await Game.create(game);
     res.status(201).json({
       id: createdGame.id,
       name: createdGame.name,
       description: createdGame.description,
+      url: createdGame.url,
     });
   } catch (error) {
     console.error('Error creating game:', error);
@@ -57,7 +59,7 @@ router.post('/', async (req, res, next) => {
 // Update por id
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, description } = req.body;
+  const { name, description, url } = req.body;
   try {
     const game = await Game.findByPk(id);
     if (!game) {
@@ -65,6 +67,7 @@ router.put('/:id', async (req, res) => {
     } else {
       game.name = name;
       game.description = description;
+      game.url = url;
       await game.save();
       res.json(game);
     }

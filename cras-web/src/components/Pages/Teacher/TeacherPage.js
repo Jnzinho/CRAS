@@ -163,15 +163,15 @@ function TeacherPage() {
   }, []);
 
   return (
-    <div className="p-4">
+    <div>
       {isCreating ? (
         <TeacherNew
           setIsCreating={setIsCreating}
           createTeacher={createTeacher}
         ></TeacherNew>
       ) : (
-        <div>
-          <div className="text-center pb-2 font-bold">Professores</div>
+        <div className='p-2'>
+          <h1 className="text-center pb-2 font-bold">Professores</h1>
           <button
             onClick={() => setIsCreating(true)}
             className="btn btn-primary bg-blue-600 p-1 text-white rounded mb-2"

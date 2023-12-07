@@ -157,20 +157,20 @@ function VideoPage() {
   }, []);
 
   return (
-    <div className="p-4">
+    <div>
       {isCreating ? (
         <VideoNew
           setIsCreating={setIsCreating}
           createVideo={createVideo}
         ></VideoNew>
       ) : (
-        <div>
+        <div className='p-2'>
           <div className="text-center pb-2 font-bold">Vídeos</div>
           <button
             onClick={() => setIsCreating(true)}
             className="btn btn-primary bg-blue-600 p-1 text-white rounded mb-2"
           >
-            Novo Vídeos
+            Novo Vídeo
           </button>
           <Modal
             isOpen={modalIsOpen}

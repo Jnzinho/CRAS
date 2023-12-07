@@ -149,15 +149,15 @@ function ClassPage() {
   }, []);
 
   return (
-    <div className="p-4">
+    <div>
       {isCreating ? (
         <ClassNew
           setIsCreating={setIsCreating}
           createClass={createClass}
         ></ClassNew>
       ) : (
-        <div>
-          <div className="text-center pb-2 font-bold">Turmas</div>
+        <div className='p-2'>
+          <h1 className="text-center pb-2 font-bold">Turmas</h1>
           <button
             onClick={() => setIsCreating(true)}
             className="btn btn-primary bg-blue-600 p-1 text-white rounded mb-2"

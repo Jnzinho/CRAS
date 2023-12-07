@@ -6,6 +6,7 @@ function GameEdit({ onModalClose, selectedGame, onEdit }) {
     if (selectedGame) {
       document.getElementById('name').value = selectedGame.name;
       document.getElementById('description').value = selectedGame.description;
+      document.getElementById('url').value = selectedGame.url;
     }
   }, [selectedGame]);
 
@@ -32,6 +33,15 @@ function GameEdit({ onModalClose, selectedGame, onEdit }) {
             type="text"
             name="description"
             id="description"
+            className="border rounded-lg p-2"
+          />
+        </div>
+        <div className="flex flex-col p-4">
+          <label htmlFor="url">Url</label>
+          <textarea
+            type="text"
+            name="url"
+            id="url"
             className="border rounded-lg p-2"
           />
         </div>
